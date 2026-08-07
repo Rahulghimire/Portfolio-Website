@@ -9,7 +9,10 @@ body {
   min-height: 100vh;
   background: #f8fafc;
   color: #0f172a;
-  font-family: var(--font-geist-sans), Arial, sans-serif;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 * {
