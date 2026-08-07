@@ -12,18 +12,24 @@ function getResendClient() {
 }
 
 async function sendWithFormSubmit(recipient: string, payload: Record<string, string>) {
+  const formData = new URLSearchParams();
+
+  Object.entries(payload).forEach(([key, value]) => {
+    formData.append(key, value);
+  });
+
+  formData.append("_captcha", "false");
+  formData.append("_subject", `New portfolio contact from ${payload.name}`);
+  formData.append("_template", "table");
+  formData.append("_replyto", payload.email);
+
   const response = await fetch(`https://formsubmit.co/ajax/${recipient}`, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
       Accept: "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
     },
-    body: JSON.stringify({
-      ...payload,
-      _captcha: "false",
-      _subject: `New portfolio contact from ${payload.name}`,
-      _template: "table",
-    }),
+    body: formData.toString(),
   });
 
   return response;
