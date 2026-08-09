@@ -2,11 +2,11 @@ import Link from "next/link";
 
 const projects = [
   {
-    title: "E-commerce Experience",
-    description:
-      "A polished storefront with smooth product discovery, fast interactions, and a modern checkout flow.",
-    stack: ["Next.js", "React", "Tailwind CSS"],
-    liveUrl: "https://example.com",
+    title: "Tallowed Texts",
+description: "A responsive website built from scratch with HTML, CSS, SCSS, and JavaScript, featuring smooth product browsing, interactive UI elements, and a clean checkout experience.",    stack: ["HTML", "CSS", "SCSS", "JavaScript", "Responsive Design"],
+    liveUrl: "https://rahulghimire.github.io/FED-TASK/dist/index.html",
+    sourceUrl: "https://github.com/Rahulghimire/internship-task",
+    image: "/assets/tallowed-texts.png",
     accent: "from-sky-500 to-cyan-400",
   },
   {
@@ -15,6 +15,8 @@ const projects = [
       "A data-first dashboard with elegant charts, concise metrics, and a clean admin experience.",
     stack: ["TypeScript", "Chart.js", "Node.js"],
     liveUrl: "https://example.com",
+    sourceUrl: "https://github.com",
+    image: "/assets/project-dashboard.jpg",
     accent: "from-violet-500 to-fuchsia-400",
   },
   {
@@ -23,6 +25,8 @@ const projects = [
       "A storytelling-driven portfolio experience focused on motion, clarity, and conversion.",
     stack: ["Next.js", "Framer Motion", "Tailwind CSS"],
     liveUrl: "https://example.com",
+    sourceUrl: "https://github.com",
+    image: "/assets/project-portfolio.jpg",
     accent: "from-emerald-500 to-lime-400",
   },
 ];
@@ -57,7 +61,15 @@ export default function ProjectsPage() {
                 <span className="text-sm font-medium text-slate-400">Live Preview</span>
               </div>
 
-              <h2 className="text-2xl font-semibold text-slate-900">{project.title}</h2>
+              <div className="mt-4 overflow-hidden rounded-2xl border border-slate-200">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="h-48 w-full object-cover transition duration-300 group-hover:scale-105"
+                />
+              </div>
+
+              <h2 className="mt-6 text-2xl font-semibold text-slate-900">{project.title}</h2>
               <p className="mt-4 text-sm leading-7 text-slate-600">{project.description}</p>
 
               <div className="mt-6 flex flex-wrap gap-2">
@@ -71,15 +83,25 @@ export default function ProjectsPage() {
                 ))}
               </div>
 
-              <Link
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-8 inline-flex items-center gap-2 rounded-full bg-slate-950 px-4 py-2 text-sm font-medium text-white transition duration-300 hover:bg-slate-800"
-              >
-                Open Live Project
-                <span className="transition group-hover:translate-x-1">→</span>
-              </Link>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full bg-slate-950 px-4 py-2 text-sm font-medium text-white transition duration-300 hover:bg-slate-800"
+                >
+                  Open Live Project
+                  <span className="transition group-hover:translate-x-1">→</span>
+                </Link>
+                <Link
+                  href={project.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition duration-300 hover:border-slate-400 hover:bg-slate-50"
+                >
+                  View Source Code
+                </Link>
+              </div>
             </article>
           ))}
         </section>

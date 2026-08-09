@@ -1,4 +1,8 @@
+'use client';
+
 import Link from "next/link";
+import { useEffect, useRef } from "react";
+import * as THREE from "three";
 
 const highlights = [
   "React & Next.js",
@@ -8,10 +12,198 @@ const highlights = [
 ];
 
 const stats = [
-  { label: "Projects Delivered", value: "10+" },
+  { label: "Projects Delivered", value: "20+" },
   { label: "Years Building", value: "2+" },
-  { label: "Focus Areas", value: "Web Apps" },
+  { label: "Focus Areas", value: "Web Apps, Mobile Apps" },
 ];
+
+const certifications = [
+  {
+    title: "Add your certification title",
+    issuer: "University / Platform / Organization",
+    year: "Year",
+    note: "Use this card for a professional credential or training milestone.",
+  },
+  {
+    title: "Add your certification title",
+    issuer: "University / Platform / Organization",
+    year: "Year",
+    note: "Great for bootcamps, short courses, or specialized workshops.",
+  },
+  {
+    title: "Add your certification title",
+    issuer: "University / Platform / Organization",
+    year: "Year",
+    note: "Perfect for showcasing achievements from different places.",
+  },
+];
+
+const featuredProjects = [
+  {
+    title: "Tallowed Texts",
+    description:
+      "A responsive website built from scratch with HTML, CSS, SCSS, and JavaScript, featuring smooth product browsing, interactive UI elements, and a clean checkout experience.",
+    stack: ["HTML", "CSS", "SCSS", "JavaScript", "Responsive Design"],
+    liveUrl: "https://rahulghimire.github.io/FED-TASK/dist/index.html",
+    sourceUrl: "https://github.com/Rahulghimire/internship-task",
+    image: "/assets/tallowed-texts.png",
+    accent: "from-sky-500 to-cyan-400",
+  },
+  {
+    title: "Analytics Dashboard",
+    description:
+      "A data-first dashboard with elegant charts, concise metrics, and a clean admin experience.",
+    stack: ["TypeScript", "Chart.js", "Node.js"],
+    liveUrl: "https://example.com",
+    sourceUrl: "https://github.com",
+    image: "/assets/project-dashboard.jpg",
+    accent: "from-violet-500 to-fuchsia-400",
+  },
+  {
+    title: "Creative Portfolio",
+    description:
+      "A storytelling-driven portfolio experience focused on motion, clarity, and conversion.",
+    stack: ["Next.js", "Framer Motion", "Tailwind CSS"],
+    liveUrl: "https://example.com",
+    sourceUrl: "https://github.com",
+    image: "/assets/project-portfolio.jpg",
+    accent: "from-emerald-500 to-lime-400",
+  },
+];
+
+function ThreeHeroScene() {
+  const mountRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const mount = mountRef.current;
+    if (!mount) return;
+
+    const scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0x000000, 0.03);
+
+    const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+    camera.position.set(0, 0, 7);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(mount.clientWidth, mount.clientHeight);
+    renderer.setClearColor(0x000000, 0);
+    mount.appendChild(renderer.domElement);
+
+    const group = new THREE.Group();
+    scene.add(group);
+
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1.2);
+    const pointLight = new THREE.PointLight(0xf472b6, 22, 18);
+    pointLight.position.set(3, 3, 5);
+    const pointLightTwo = new THREE.PointLight(0x38bdf8, 18, 18);
+    pointLightTwo.position.set(-3, -2, 4);
+    scene.add(ambientLight, pointLight, pointLightTwo);
+
+    const materials = [
+      new THREE.MeshPhysicalMaterial({
+        color: 0xf472b6,
+        roughness: 0.18,
+        metalness: 0.18,
+        transmission: 0.25,
+        thickness: 0.7,
+      }),
+      new THREE.MeshPhysicalMaterial({
+        color: 0x8b5cf6,
+        roughness: 0.16,
+        metalness: 0.2,
+        transmission: 0.2,
+        thickness: 0.6,
+      }),
+      new THREE.MeshPhysicalMaterial({
+        color: 0x38bdf8,
+        roughness: 0.2,
+        metalness: 0.16,
+        transmission: 0.18,
+        thickness: 0.5,
+      }),
+    ];
+
+    const orbit = new THREE.Mesh(
+      new THREE.TorusKnotGeometry(1.1, 0.26, 160, 16),
+      materials[0]
+    );
+    orbit.position.set(0.2, 0.15, 0);
+    group.add(orbit);
+
+    const core = new THREE.Mesh(new THREE.IcosahedronGeometry(1.05, 0), materials[1]);
+    core.position.set(-0.3, -0.1, 0);
+    group.add(core);
+
+    const ring = new THREE.Mesh(new THREE.TorusGeometry(1.6, 0.05, 16, 80), materials[2]);
+    ring.rotation.x = Math.PI / 2.2;
+    group.add(ring);
+
+    const particleGeometry = new THREE.BufferGeometry();
+    const particleCount = 220;
+    const positions = new Float32Array(particleCount * 3);
+
+    for (let i = 0; i < particleCount; i += 1) {
+      const radius = 2.4 + Math.random() * 1.4;
+      const theta = Math.random() * Math.PI * 2;
+      const phi = Math.acos(2 * Math.random() - 1);
+      positions[i * 3] = radius * Math.sin(phi) * Math.cos(theta);
+      positions[i * 3 + 1] = radius * Math.cos(phi);
+      positions[i * 3 + 2] = radius * Math.sin(phi) * Math.sin(theta);
+    }
+
+    particleGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+    const particles = new THREE.Points(
+      particleGeometry,
+      new THREE.PointsMaterial({
+        color: 0xffffff,
+        size: 0.016,
+        transparent: true,
+        opacity: 0.7,
+      })
+    );
+    scene.add(particles);
+
+    const clock = new THREE.Clock();
+    let frameId = 0;
+
+    const animate = () => {
+      const elapsed = clock.getElapsedTime();
+      group.rotation.y = elapsed * 0.35;
+      group.rotation.x = Math.sin(elapsed * 0.5) * 0.18;
+      orbit.rotation.y = elapsed * 0.7;
+      core.rotation.y = -elapsed * 0.8;
+      ring.rotation.z = elapsed * 0.35;
+      particles.rotation.y = elapsed * 0.08;
+      renderer.render(scene, camera);
+      frameId = window.requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    const onResize = () => {
+      if (!mount) return;
+      const width = mount.clientWidth;
+      const height = mount.clientHeight;
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+      renderer.setSize(width, height);
+    };
+
+    window.addEventListener("resize", onResize);
+
+    return () => {
+      window.cancelAnimationFrame(frameId);
+      window.removeEventListener("resize", onResize);
+      renderer.dispose();
+      materials.forEach((material) => material.dispose());
+      particleGeometry.dispose();
+      mount.removeChild(renderer.domElement);
+    };
+  }, []);
+
+  return <div ref={mountRef} className="pointer-events-none absolute inset-0 rounded-[2rem]" />;
+}
 
 export default function LandingPage() {
   return (
@@ -67,7 +259,9 @@ export default function LandingPage() {
           </div>
 
           <div className="relative animate-fade-up delay-200">
-            <div className="hero-card">
+            <div className="relative overflow-hidden rounded-[2rem] border border-white/40 bg-white/20 p-4 shadow-[0_20px_60px_rgba(15,23,42,0.08)] backdrop-blur-sm">
+              <ThreeHeroScene />
+              <div className="hero-card relative z-10">
               <div className="mb-6 flex items-center justify-between">
                 <div>
                   <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
@@ -102,6 +296,7 @@ export default function LandingPage() {
                   web applications that feel polished from day one.
                 </p>
               </div>
+              </div>
             </div>
 
             <div className="floating-card floating-card-top">
@@ -117,6 +312,64 @@ export default function LandingPage() {
               </p>
               <p className="mt-1 text-sm font-semibold text-slate-900">Fast & scalable</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative mx-auto max-w-7xl px-6 py-16 sm:px-8 lg:px-10">
+        <div className="rounded-[2rem] border border-slate-200/80 bg-white/70 p-8 shadow-[0_20px_60px_rgba(15,23,42,0.08)] backdrop-blur lg:p-10">
+          <div className="mb-8 flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.25em] text-fuchsia-600">Featured Projects</p>
+              <h2 className="mt-2 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+                Selected work that reflects my design and development approach.
+              </h2>
+            </div>
+            <Link
+              href="/projects"
+              className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition hover:border-fuchsia-300 hover:bg-fuchsia-50"
+            >
+              View All Projects
+            </Link>
+          </div>
+
+          <div className="grid gap-6 lg:grid-cols-3">
+            {featuredProjects.map((project) => (
+              <div key={project.title} className="overflow-hidden rounded-[1.5rem] border border-slate-200 bg-slate-50/70 shadow-sm">
+                <div className={`bg-gradient-to-r ${project.accent} p-4`}>
+                  <img src={project.image} alt={project.title} className="h-48 w-full rounded-[1rem] object-cover shadow-sm" />
+                </div>
+                <div className="p-5">
+                  <h3 className="text-xl font-semibold text-slate-900">{project.title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-slate-600">{project.description}</p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {project.stack.map((item) => (
+                      <span key={item} className="rounded-full bg-white px-2.5 py-1 text-xs font-medium text-slate-600 shadow-sm">
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="mt-5 flex flex-wrap gap-3">
+                    <Link
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rounded-full bg-slate-950 px-3.5 py-2 text-sm font-medium text-white transition hover:bg-slate-800"
+                    >
+                      Live Project
+                    </Link>
+                    <Link
+                      href={project.sourceUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rounded-full border border-slate-200 bg-white px-3.5 py-2 text-sm font-medium text-slate-700 transition hover:border-slate-400"
+                    >
+                      Source Code
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -194,6 +447,45 @@ export default function LandingPage() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="relative mx-auto max-w-7xl px-6 py-16 sm:px-8 lg:px-10">
+        <div className="rounded-[2rem] border border-slate-200/80 bg-white/70 p-8 shadow-[0_20px_60px_rgba(15,23,42,0.08)] backdrop-blur lg:p-10">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.25em] text-fuchsia-600">Certifications</p>
+              <h2 className="mt-2 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+                Credentials from different places, all in one place.
+              </h2>
+            </div>
+            <span className="rounded-full bg-violet-100 px-3 py-1 text-sm font-medium text-violet-700">
+              Academic + Professional + Online
+            </span>
+          </div>
+
+          <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            {certifications.map((cert,index) => (
+              <div
+                key={cert?.title+index}
+                className="rounded-2xl border border-slate-200 bg-slate-50/80 p-5 shadow-sm transition hover:-translate-y-1 hover:border-fuchsia-300 hover:bg-white"
+              >
+                <p className="text-sm font-semibold text-slate-900">{cert.title}</p>
+                <p className="mt-2 text-sm text-slate-600">{cert.issuer}</p>
+                <div className="mt-4 flex items-center justify-between text-sm text-slate-500">
+                  <span>{cert.year}</span>
+                  <span className="rounded-full bg-white px-2.5 py-1 text-xs font-medium text-slate-600">
+                    Verified
+                  </span>
+                </div>
+                <p className="mt-4 text-sm leading-7 text-slate-600">{cert.note}</p>
+              </div>
+            ))}
+          </div>
+
+          <p className="mt-6 text-sm leading-7 text-slate-600">
+            Replace these cards with your real certifications, training programs, and achievements from universities, companies, or online platforms.
+          </p>
         </div>
       </section>
 
