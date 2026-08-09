@@ -1,7 +1,8 @@
 'use client';
 
+import { Modal } from "antd";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 
 const highlights = [
@@ -255,6 +256,10 @@ function ThreeHeroScene() {
 }
 
 export default function LandingPage() {
+  const [selectedCert, setSelectedCert] = useState<{
+    title: string;
+    image: string;
+  } | null>(null);
   return (
     <main className="relative min-h-screen overflow-hidden bg-[linear-gradient(135deg,_rgba(255,247,237,0.96)_0%,_rgba(253,242,248,0.95)_45%,_rgba(238,242,255,0.96)_100%)] text-slate-900">
       <div className="hero-orb hero-orb-a" />
@@ -268,7 +273,7 @@ export default function LandingPage() {
           <div className="max-w-2xl animate-fade-up">
             <div className="mb-6 inline-flex items-center rounded-full border border-fuchsia-200 bg-white/80 px-4 py-2 text-sm font-medium text-slate-700 shadow-sm backdrop-blur">
               <span className="mr-2 h-2.5 w-2.5 rounded-full bg-emerald-500" />
-              Available for freelance, part-time, and full-time opportunities
+              Available for part-time, full-time, and freelance opportunities
             </div>
 
             <h1 className="text-5xl font-semibold tracking-tight text-slate-950 sm:text-6xl lg:text-7xl">
@@ -525,8 +530,12 @@ export default function LandingPage() {
               >
                 <img
                   src={cert.image}
+                  onClick={() =>
+                    setSelectedCert({ title: cert.title, image: cert.image })
+                  }
                   alt={cert.title}
-                  className="h-48 w-full object-cover"
+                  className="h-48 w-full cursor-pointer object-cover transition hover:opacity-90"
+
                 />
 
                 <div className="p-5">
@@ -585,6 +594,40 @@ export default function LandingPage() {
           </div>
         </div>
       </footer>
+
+      <Modal
+        open={!!selectedCert}
+        onCancel={() => setSelectedCert(null)}
+        footer={null}
+        centered
+        width="90%"
+        style={{ maxWidth: 900 }}
+        styles={{
+          body: {
+            padding: 0,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            background: "#0f172a",
+          },
+        }}
+        destroyOnHidden
+      >
+        {selectedCert && (
+          <div className="w-full">
+            <img
+              src={selectedCert.image}
+              alt={selectedCert.title}
+              className="max-h-[80vh] w-full object-contain"
+            />
+            <div className="bg-slate-900 px-6 py-4 text-center">
+              <p className="text-sm font-medium text-white">
+                {selectedCert.title}
+              </p>
+            </div>
+          </div>
+        )}
+      </Modal>
     </main>
   );
 }
