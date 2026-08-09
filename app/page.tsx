@@ -4,6 +4,7 @@ import { Modal } from "antd";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
+import Contact from "./contact/page";
 
 const highlights = [
   "React & Next.js",
@@ -88,6 +89,7 @@ const featuredProjects = [
       "Redux Persist",
       "Chart.js",
       "Animations",
+      "Rest Api"
     ],
     liveUrl: "https://jewelry.dipartha.com/login",
     sourceUrl: "https://jewelry.dipartha.com/login",
@@ -116,7 +118,6 @@ const featuredProjects = [
 
     image: "/assets/pet-store.png",
 
-    // accent: "from-emerald-500 to-green-400",
     accent: "from-violet-500 to-purple-400",
   },
 ];
@@ -563,6 +564,9 @@ export default function LandingPage() {
             ))}
           </div>
         </div>
+      </section>
+      <section>
+        <Contact  />
       </section>
 
       <footer className="relative border-t border-white/60 bg-white/50 px-6 py-6 backdrop-blur sm:px-8 lg:px-10">

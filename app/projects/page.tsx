@@ -3,55 +3,79 @@ import Link from "next/link";
 const projects = [
   {
     title: "Tallowed Texts",
-description: "A responsive website built from scratch with HTML, CSS, SCSS, and JavaScript, featuring smooth product browsing, interactive UI elements, and a clean checkout experience.",    stack: ["HTML", "CSS", "SCSS", "JavaScript", "Responsive Design"],
+    description:
+      "A responsive website built from scratch with HTML, CSS, SCSS, and JavaScript, featuring smooth product browsing, interactive UI elements, and a clean checkout experience.",
+    stack: ["HTML", "CSS", "SCSS", "JavaScript", "Responsive Design"],
     liveUrl: "https://rahulghimire.github.io/FED-TASK/dist/index.html",
     sourceUrl: "https://github.com/Rahulghimire/internship-task",
     image: "/assets/tallowed-texts.png",
-    accent: "from-sky-500 to-cyan-400",
   },
-{
-  title: "Jewelry Management System",
-  description:
-    "A full-stack jewelry management system with a modern admin dashboard, inventory management, data visualization, and smooth user interactions.",
-  stack: [
-    "Django",
-    "React",
-    "TypeScript",
-    "Tailwind CSS",
-    "Ant Design",
-    "TanStack Query",
-    "Redux Persist",
-    "Chart.js",
-    "Animations",
-  ],
-  liveUrl: "https://jewelry.dipartha.com/login",
-  sourceUrl: "https://jewelry.dipartha.com/login",
-  image: "/assets/jewelry-mgmt.png",
-  accent: "from-violet-500 to-fuchsia-400",
-},
- {
-  title: "Pet Product Store",
+  {
+    title: "Mero Doctor",
+    description:
+      "A hospital appointment booking system",
+    stack: [
+      "React.js",
+      "JavaScript",
+      "Bootstrap",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+    ],
 
-  description:
-    "A modern e-commerce store for pet products with responsive product browsing, smooth interactions, and a user-friendly shopping experience.",
+    liveUrl: "https://merodoctor.com/",
 
-  stack: [
-    "React.js",
-    "JavaScript",
-    "Tailwind CSS",
-    "Node.js",
-    "Express.js",
-    "MongoDB",
-  ],
+    sourceUrl: "https://merodoctor.com/",
 
-  liveUrl: "https://react-internship-task.vercel.app/",
+    image: "/assets/mero-doctor.png",
 
-  sourceUrl: "https://github.com/Rahulghimire/frontend-developer-task",
+    accent: "from-blue-500 to-cyan-400",
+  },
+  {
+    title: "Jewelry Management System",
+    description:
+      "A full-stack jewelry management system with a modern admin dashboard, inventory management, data visualization, and smooth user interactions.",
+    stack: [
+      "Django",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Ant Design",
+      "TanStack Query",
+      "Redux Persist",
+      "Chart.js",
+      "Animations",
+    ],
+    liveUrl: "https://jewelry.dipartha.com/login",
+    sourceUrl: "https://jewelry.dipartha.com/login",
+    image: "/assets/jewelry-mgmt.png",
+    accent: "from-emerald-500 to-green-400",
 
-  image: "/assets/pet-store.png",
+  },
+  {
+    title: "Pet Product Store",
 
-  accent: "from-violet-500 to-fuchsia-400",
-},
+    description:
+      "A modern e-commerce store for pet products with responsive product browsing, smooth interactions, and a user-friendly shopping experience.",
+
+    stack: [
+      "React.js",
+      "JavaScript",
+      "Tailwind CSS",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+    ],
+
+    liveUrl: "https://react-internship-task.vercel.app/",
+
+    sourceUrl: "https://github.com/Rahulghimire/frontend-developer-task",
+
+    image: "/assets/pet-store.png",
+
+    // accent: "from-emerald-500 to-green-400",
+    accent: "from-violet-500 to-purple-400",
+  },
 ];
 
 export default function ProjectsPage() {
@@ -81,7 +105,17 @@ export default function ProjectsPage() {
                 <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
                   Project {index + 1}
                 </span>
-                <span className="text-sm font-medium text-slate-400">Live Preview</span>
+                <span className="text-sm font-medium text-slate-400">
+                  <Link
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full bg-slate-950 px-4 py-2 text-sm font-medium text-white transition duration-300 hover:bg-slate-800"
+                  >
+                    Live Preview
+                    <span className="transition group-hover:translate-x-1">→</span>
+                  </Link>
+                </span>
               </div>
 
               <div className="mt-4 overflow-hidden rounded-2xl border border-slate-200">
@@ -107,15 +141,6 @@ export default function ProjectsPage() {
               </div>
 
               <div className="mt-8 flex flex-wrap gap-3">
-                <Link
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-slate-950 px-4 py-2 text-sm font-medium text-white transition duration-300 hover:bg-slate-800"
-                >
-                  Open Live Project
-                  <span className="transition group-hover:translate-x-1">→</span>
-                </Link>
                 <Link
                   href={project.sourceUrl}
                   target="_blank"
