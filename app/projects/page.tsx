@@ -9,26 +9,49 @@ description: "A responsive website built from scratch with HTML, CSS, SCSS, and 
     image: "/assets/tallowed-texts.png",
     accent: "from-sky-500 to-cyan-400",
   },
-  {
-    title: "Analytics Dashboard",
-    description:
-      "A data-first dashboard with elegant charts, concise metrics, and a clean admin experience.",
-    stack: ["TypeScript", "Chart.js", "Node.js"],
-    liveUrl: "https://example.com",
-    sourceUrl: "https://github.com",
-    image: "/assets/project-dashboard.jpg",
-    accent: "from-violet-500 to-fuchsia-400",
-  },
-  {
-    title: "Creative Portfolio",
-    description:
-      "A storytelling-driven portfolio experience focused on motion, clarity, and conversion.",
-    stack: ["Next.js", "Framer Motion", "Tailwind CSS"],
-    liveUrl: "https://example.com",
-    sourceUrl: "https://github.com",
-    image: "/assets/project-portfolio.jpg",
-    accent: "from-emerald-500 to-lime-400",
-  },
+{
+  title: "Jewelry Management System",
+  description:
+    "A full-stack jewelry management system with a modern admin dashboard, inventory management, data visualization, and smooth user interactions.",
+  stack: [
+    "Django",
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "Ant Design",
+    "TanStack Query",
+    "Redux Persist",
+    "Chart.js",
+    "Animations",
+  ],
+  liveUrl: "https://jewelry.dipartha.com/login",
+  sourceUrl: "https://jewelry.dipartha.com/login",
+  image: "/assets/jewelry-mgmt.png",
+  accent: "from-violet-500 to-fuchsia-400",
+},
+ {
+  title: "Pet Product Store",
+
+  description:
+    "A modern e-commerce store for pet products with responsive product browsing, smooth interactions, and a user-friendly shopping experience.",
+
+  stack: [
+    "React.js",
+    "JavaScript",
+    "Tailwind CSS",
+    "Node.js",
+    "Express.js",
+    "MongoDB",
+  ],
+
+  liveUrl: "https://react-internship-task.vercel.app/",
+
+  sourceUrl: "https://github.com/Rahulghimire/frontend-developer-task",
+
+  image: "/assets/pet-store.png",
+
+  accent: "from-violet-500 to-fuchsia-400",
+},
 ];
 
 export default function ProjectsPage() {

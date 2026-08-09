@@ -19,24 +19,28 @@ const stats = [
 
 const certifications = [
   {
-    title: "Add your certification title",
-    issuer: "University / Platform / Organization",
-    year: "Year",
-    note: "Use this card for a professional credential or training milestone.",
+    title: "Cisco CCNP Security SNCF v1.1 (Exam 300-710) Cert Prep",
+    issuer: "LinkedIn Learning",
+    year: "2026",
+    image: "/assets/cisco-ccnp-security.png",
+    note: "Professional training focused on Cisco security technologies and preparation for the CCNP Security SNCF exam.",
   },
   {
-    title: "Add your certification title",
-    issuer: "University / Platform / Organization",
-    year: "Year",
-    note: "Great for bootcamps, short courses, or specialized workshops.",
+    title: "Introduction to Cybersecurity",
+    issuer: "Cisco Networking Academy",
+    year: "2026",
+    image: "/assets/introduction-to-cybersecurity.png",
+    note: "Foundational cybersecurity training covering security concepts, threats, vulnerabilities, and online safety.",
   },
   {
-    title: "Add your certification title",
-    issuer: "University / Platform / Organization",
-    year: "Year",
-    note: "Perfect for showcasing achievements from different places.",
+    title: "Node.js Essential Training",
+    issuer: "LinkedIn Learning",
+    year: "2026",
+    image: "/assets/node-js-training.png",
+    note: "Practical training covering Node.js fundamentals, server-side development, modules, and application building.",
   },
 ];
+
 
 const featuredProjects = [
   {
@@ -47,27 +51,72 @@ const featuredProjects = [
     liveUrl: "https://rahulghimire.github.io/FED-TASK/dist/index.html",
     sourceUrl: "https://github.com/Rahulghimire/internship-task",
     image: "/assets/tallowed-texts.png",
-    accent: "from-sky-500 to-cyan-400",
   },
   {
-    title: "Analytics Dashboard",
+    title: "Mero Doctor",
     description:
-      "A data-first dashboard with elegant charts, concise metrics, and a clean admin experience.",
-    stack: ["TypeScript", "Chart.js", "Node.js"],
-    liveUrl: "https://example.com",
-    sourceUrl: "https://github.com",
-    image: "/assets/project-dashboard.jpg",
-    accent: "from-violet-500 to-fuchsia-400",
+      "A hospital appointment booking system",
+    stack: [
+      "React.js",
+      "JavaScript",
+      "Bootstrap",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+    ],
+
+    liveUrl: "https://merodoctor.com/",
+
+    sourceUrl: "https://merodoctor.com/",
+
+    image: "/assets/mero-doctor.png",
+
+    accent: "from-blue-500 to-cyan-400",
   },
   {
-    title: "Creative Portfolio",
+    title: "Jewelry Management System",
     description:
-      "A storytelling-driven portfolio experience focused on motion, clarity, and conversion.",
-    stack: ["Next.js", "Framer Motion", "Tailwind CSS"],
-    liveUrl: "https://example.com",
-    sourceUrl: "https://github.com",
-    image: "/assets/project-portfolio.jpg",
-    accent: "from-emerald-500 to-lime-400",
+      "A full-stack jewelry management system with a modern admin dashboard, inventory management, data visualization, and smooth user interactions.",
+    stack: [
+      "Django",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Ant Design",
+      "TanStack Query",
+      "Redux Persist",
+      "Chart.js",
+      "Animations",
+    ],
+    liveUrl: "https://jewelry.dipartha.com/login",
+    sourceUrl: "https://jewelry.dipartha.com/login",
+    image: "/assets/jewelry-mgmt.png",
+    accent: "from-emerald-500 to-green-400",
+
+  },
+  {
+    title: "Pet Product Store",
+
+    description:
+      "A modern e-commerce store for pet products with responsive product browsing, smooth interactions, and a user-friendly shopping experience.",
+
+    stack: [
+      "React.js",
+      "JavaScript",
+      "Tailwind CSS",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+    ],
+
+    liveUrl: "https://react-internship-task.vercel.app/",
+
+    sourceUrl: "https://github.com/Rahulghimire/frontend-developer-task",
+
+    image: "/assets/pet-store.png",
+
+    // accent: "from-emerald-500 to-green-400",
+    accent: "from-violet-500 to-purple-400",
   },
 ];
 
@@ -262,40 +311,40 @@ export default function LandingPage() {
             <div className="relative overflow-hidden rounded-[2rem] border border-white/40 bg-white/20 p-4 shadow-[0_20px_60px_rgba(15,23,42,0.08)] backdrop-blur-sm">
               <ThreeHeroScene />
               <div className="hero-card relative z-10">
-              <div className="mb-6 flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
-                    Current Focus
-                  </p>
-                  <h2 className="mt-1 text-xl font-semibold text-slate-900">
-                    Building thoughtful digital products
-                  </h2>
-                </div>
-                <span className="rounded-full bg-emerald-100 px-3 py-1 text-sm font-medium text-emerald-700">
-                  Online
-                </span>
-              </div>
-
-              <div className="space-y-3">
-                {stats.map((stat) => (
-                  <div
-                    key={stat.label}
-                    className="flex items-center justify-between rounded-2xl border border-slate-200 bg-white/80 px-4 py-3 shadow-sm"
-                  >
-                    <span className="text-sm text-slate-600">{stat.label}</span>
-                    <span className="text-sm font-semibold text-slate-900">
-                      {stat.value}
-                    </span>
+                <div className="mb-6 flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
+                      Current Focus
+                    </p>
+                    <h2 className="mt-1 text-xl font-semibold text-slate-900">
+                      Building thoughtful digital products
+                    </h2>
                   </div>
-                ))}
-              </div>
+                  <span className="rounded-full bg-emerald-100 px-3 py-1 text-sm font-medium text-emerald-700">
+                    Online
+                  </span>
+                </div>
 
-              <div className="mt-6 rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-900 via-violet-900 to-sky-800 p-5 text-white shadow-lg">
-                <p className="text-sm leading-6 text-slate-200">
-                  I specialize in turning ideas into seamless interfaces and reliable
-                  web applications that feel polished from day one.
-                </p>
-              </div>
+                <div className="space-y-3">
+                  {stats.map((stat) => (
+                    <div
+                      key={stat.label}
+                      className="flex items-center justify-between rounded-2xl border border-slate-200 bg-white/80 px-4 py-3 shadow-sm"
+                    >
+                      <span className="text-sm text-slate-600">{stat.label}</span>
+                      <span className="text-sm font-semibold text-slate-900">
+                        {stat.value}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-6 rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-900 via-violet-900 to-sky-800 p-5 text-white shadow-lg">
+                  <p className="text-sm leading-6 text-slate-200">
+                    I specialize in turning ideas into seamless interfaces and reliable
+                    web applications that feel polished from day one.
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -392,6 +441,10 @@ export default function LandingPage() {
                   <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-sm">TypeScript</span>
                   <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-sm">Next.js</span>
                   <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-sm">Node.js</span>
+                  <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-sm">MySQL</span>
+                  <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-sm">Ant Design</span>
+                  <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-sm">Material UI</span>
+
                 </div>
               </div>
             </div>
@@ -456,7 +509,7 @@ export default function LandingPage() {
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.25em] text-fuchsia-600">Certifications</p>
               <h2 className="mt-2 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
-                Credentials from different places, all in one place.
+                Credentials from different places.
               </h2>
             </div>
             <span className="rounded-full bg-violet-100 px-3 py-1 text-sm font-medium text-violet-700">
@@ -465,27 +518,41 @@ export default function LandingPage() {
           </div>
 
           <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-            {certifications.map((cert,index) => (
+            {certifications.map((cert, index) => (
               <div
-                key={cert?.title+index}
-                className="rounded-2xl border border-slate-200 bg-slate-50/80 p-5 shadow-sm transition hover:-translate-y-1 hover:border-fuchsia-300 hover:bg-white"
+                key={cert?.title + index}
+                className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50/80 shadow-sm transition hover:-translate-y-1 hover:border-fuchsia-300 hover:bg-white"
               >
-                <p className="text-sm font-semibold text-slate-900">{cert.title}</p>
-                <p className="mt-2 text-sm text-slate-600">{cert.issuer}</p>
-                <div className="mt-4 flex items-center justify-between text-sm text-slate-500">
-                  <span>{cert.year}</span>
-                  <span className="rounded-full bg-white px-2.5 py-1 text-xs font-medium text-slate-600">
-                    Verified
-                  </span>
+                <img
+                  src={cert.image}
+                  alt={cert.title}
+                  className="h-48 w-full object-cover"
+                />
+
+                <div className="p-5">
+                  <p className="text-sm font-semibold text-slate-900">
+                    {cert.title}
+                  </p>
+
+                  <p className="mt-2 text-sm text-slate-600">
+                    {cert.issuer}
+                  </p>
+
+                  <div className="mt-4 flex items-center justify-between text-sm text-slate-500">
+                    <span>{cert.year}</span>
+
+                    <span className="rounded-full bg-white px-2.5 py-1 text-xs font-medium text-slate-600">
+                      Verified
+                    </span>
+                  </div>
+
+                  <p className="mt-4 text-sm leading-7 text-slate-600">
+                    {cert.note}
+                  </p>
                 </div>
-                <p className="mt-4 text-sm leading-7 text-slate-600">{cert.note}</p>
               </div>
             ))}
           </div>
-
-          <p className="mt-6 text-sm leading-7 text-slate-600">
-            Replace these cards with your real certifications, training programs, and achievements from universities, companies, or online platforms.
-          </p>
         </div>
       </section>
 
