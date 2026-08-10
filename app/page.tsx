@@ -5,122 +5,11 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import Contact from "./contact/page";
-
-const highlights = [
-  "React & Next.js",
-  "Responsive UI Design",
-  "Full-Stack Development",
-  "Performance Focused",
-];
-
-const stats = [
-  { label: "Projects Delivered", value: "20+" },
-  { label: "Years Building", value: "2+" },
-  { label: "Focus Areas", value: "Web Apps, Mobile Apps" },
-];
-
-const certifications = [
-  {
-    title: "Cisco CCNP Security SNCF v1.1 (Exam 300-710) Cert Prep",
-    issuer: "LinkedIn Learning",
-    year: "2026",
-    image: "/assets/cisco-ccnp-security.png",
-    note: "Professional training focused on Cisco security technologies and preparation for the CCNP Security SNCF exam.",
-  },
-  {
-    title: "Introduction to Cybersecurity",
-    issuer: "Cisco Networking Academy",
-    year: "2026",
-    image: "/assets/introduction-to-cybersecurity.png",
-    note: "Foundational cybersecurity training covering security concepts, threats, vulnerabilities, and online safety.",
-  },
-  {
-    title: "Node.js Essential Training",
-    issuer: "LinkedIn Learning",
-    year: "2026",
-    image: "/assets/node-js-training.png",
-    note: "Practical training covering Node.js fundamentals, server-side development, modules, and application building.",
-  },
-];
+import { featuredProjects, certifications, highlights, stats } from "./projects/data";
 
 
-const featuredProjects = [
-  {
-    title: "Tallowed Texts",
-    description:
-      "A responsive website built from scratch with HTML, CSS, SCSS, and JavaScript, featuring smooth product browsing, interactive UI elements, and a clean checkout experience.",
-    stack: ["HTML", "CSS", "SCSS", "JavaScript", "Responsive Design"],
-    liveUrl: "https://rahulghimire.github.io/FED-TASK/dist/index.html",
-    sourceUrl: "https://github.com/Rahulghimire/internship-task",
-    image: "/assets/tallowed-texts.png",
-  },
-  {
-    title: "Mero Doctor",
-    description:
-      "A hospital appointment booking system",
-    stack: [
-      "React.js",
-      "JavaScript",
-      "Bootstrap",
-      "Node.js",
-      "Express.js",
-      "MongoDB",
-    ],
 
-    liveUrl: "https://merodoctor.com/",
 
-    sourceUrl: "https://merodoctor.com/",
-
-    image: "/assets/mero-doctor.png",
-
-    accent: "from-blue-500 to-cyan-400",
-  },
-  {
-    title: "Jewelry Management System",
-    description:
-      "A full-stack jewelry management system with a modern admin dashboard, inventory management, data visualization, and smooth user interactions.",
-    stack: [
-      "Django",
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "Ant Design",
-      "TanStack Query",
-      "Redux Persist",
-      "Chart.js",
-      "Animations",
-      "Rest Api"
-    ],
-    liveUrl: "https://jewelry.dipartha.com/login",
-    sourceUrl: "https://jewelry.dipartha.com/login",
-    image: "/assets/jewelry-mgmt.png",
-    accent: "from-emerald-500 to-green-400",
-
-  },
-  {
-    title: "Pet Product Store",
-
-    description:
-      "A modern e-commerce store for pet products with responsive product browsing, smooth interactions, and a user-friendly shopping experience.",
-
-    stack: [
-      "React.js",
-      "JavaScript",
-      "Tailwind CSS",
-      "Node.js",
-      "Express.js",
-      "MongoDB",
-    ],
-
-    liveUrl: "https://react-internship-task.vercel.app/",
-
-    sourceUrl: "https://github.com/Rahulghimire/frontend-developer-task",
-
-    image: "/assets/pet-store.png",
-
-    accent: "from-violet-500 to-purple-400",
-  },
-];
 
 function ThreeHeroScene() {
   const mountRef = useRef<HTMLDivElement | null>(null);
@@ -447,7 +336,8 @@ export default function LandingPage() {
                   <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-sm">TypeScript</span>
                   <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-sm">Next.js</span>
                   <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-sm">Node.js</span>
-                  <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-sm">MySQL</span>
+                  <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-sm">SQL</span>
+                  <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-sm">NoSQL</span>
                   <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-sm">Ant Design</span>
                   <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-sm">Material UI</span>
 
