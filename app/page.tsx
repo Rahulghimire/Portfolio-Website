@@ -150,6 +150,7 @@ export default function LandingPage() {
     title: string;
     image: string;
   } | null>(null);
+  
   return (
     <main className="relative min-h-screen overflow-hidden bg-[linear-gradient(135deg,_rgba(255,247,237,0.96)_0%,_rgba(253,242,248,0.95)_45%,_rgba(238,242,255,0.96)_100%)] text-slate-900">
       <div className="hero-orb hero-orb-a" />
